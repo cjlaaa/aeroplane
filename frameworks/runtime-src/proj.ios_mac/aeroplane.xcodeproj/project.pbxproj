@@ -83,6 +83,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0F0FDBE51CF579C100DBAFAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
+			remoteInfo = "libcocos2d tvOS";
+		};
+		0F0FDBE81CF579C100DBAFAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507B43531C31FA0C0067B53E;
+			remoteInfo = "libluacocos2d tvOS";
+		};
 		152A349E199CE72E004B68DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
@@ -305,6 +319,7 @@
 			children = (
 				15A8A4171834BDA200142BE0 /* libcocos2d Mac.a */,
 				15A8A4251834BDA200142BE0 /* libcocos2d iOS.a */,
+				0F0FDBE61CF579C100DBAFAC /* libcocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -396,6 +411,7 @@
 			children = (
 				15427CC2198F220600DC375D /* libluacocos2d Mac.a */,
 				15427CD2198F220600DC375D /* libluacocos2d iOS.a */,
+				0F0FDBE91CF579C100DBAFAC /* libluacocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -564,6 +580,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0F0FDBE61CF579C100DBAFAC /* libcocos2d tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d tvOS.a";
+			remoteRef = 0F0FDBE51CF579C100DBAFAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0F0FDBE91CF579C100DBAFAC /* libluacocos2d tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libluacocos2d tvOS.a";
+			remoteRef = 0F0FDBE81CF579C100DBAFAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		15427CC2198F220600DC375D /* libluacocos2d Mac.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;

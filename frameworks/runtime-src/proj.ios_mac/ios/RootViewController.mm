@@ -66,20 +66,20 @@
 // For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
 - (NSUInteger) supportedInterfaceOrientations{
 #ifdef __IPHONE_6_0
-    if (SimpleConfigParser::getInstance()->isLanscape()) {
-        return UIInterfaceOrientationMaskLandscape;
-    }else{
+//    if (SimpleConfigParser::getInstance()->isLanscape()) {
+//        return UIInterfaceOrientationMaskLandscape;
+//    }else{
         return UIInterfaceOrientationMaskPortrait;
-    }
+//    }
 #endif
 }
 
 - (BOOL) shouldAutorotate {
-    if (SimpleConfigParser::getInstance()->isLanscape()) {
-        return YES;
-    }else{
+//    if (SimpleConfigParser::getInstance()->isLanscape()) {
+//        return YES;
+//    }else{
         return NO;
-    }
+//    }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {

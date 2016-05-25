@@ -55,6 +55,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 {
     // set default FPS
     Director::getInstance()->setAnimationInterval(1.0 / 60.0f);
+    
+    GLView *glview = Director::getInstance()->getOpenGLView();
+    glview->setFrameSize(640, 960);
 
     // register lua module
     auto engine = LuaEngine::getInstance();

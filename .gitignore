@@ -2,3 +2,8 @@ frameworks/cocos2d-x
 src/cocos
 runtime
 frameworks/runtime-src/proj.linux
+frameworks/runtime-src/proj.ios_mac/aeroplane.xcodeproj/project.xcworkspace
+frameworks/runtime-src/proj.ios_mac/aeroplane.xcodeproj/xcuserdata
+frameworks/runtime-src/proj.ios_mac/DerivedData
+frameworks/runtime-src/proj.ios_mac/build
+simulator
