@@ -57,7 +57,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     Director::getInstance()->setAnimationInterval(1.0 / 60.0f);
     
     GLView *glview = Director::getInstance()->getOpenGLView();
-    glview->setFrameSize(640, 960);
+    glview->setFrameSize(640, 1136);
 
     // register lua module
     auto engine = LuaEngine::getInstance();
