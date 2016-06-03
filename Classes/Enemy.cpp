@@ -98,21 +98,22 @@ void Enemy::Dead()
 {
 	do 
 	{
-		//为防止动画循环时反复播放，设置一个开关，当播放开始时则不再播放。
-		if (m_bIsAnimationOn)
-		{
-			//加分
+        Disappear();
+//		//为防止动画循环时反复播放，设置一个开关，当播放开始时则不再播放。
+//		if (m_bIsAnimationOn)
+//		{
+//			//加分
 			AddScoreMsg Info;
 			Info.nScore = m_nScore;
 			SendMsg(enMsgAddScore,&Info,sizeof(Info));
-
-			//因为死亡动画只需要播放一次，所以不需要再打开
-			m_bIsAnimationOn = false;
-			CCAnimation* pBoom = CCAnimationCache::sharedAnimationCache()->animationByName("Boom");
-			//CC_BREAK_IF(pBoom==NULL);
-
-			runAction(CCSequence::create(CCAnimate::create(pBoom),CCCallFunc::create(this,callfunc_selector(Enemy::Disappear)),NULL));
-		}
+//
+//			//因为死亡动画只需要播放一次，所以不需要再打开
+//			m_bIsAnimationOn = false;
+//			CCAnimation* pBoom = CCAnimationCache::sharedAnimationCache()->animationByName("Boom");
+//			//CC_BREAK_IF(pBoom==NULL);
+//
+//			runAction(CCSequence::create(CCAnimate::create(pBoom),CCCallFunc::create(this,callfunc_selector(Enemy::Disappear)),NULL));
+//		}
 		return;
 	} while (false);
 	CCLog("Fun Enemy::Dead Error!");
@@ -120,5 +121,6 @@ void Enemy::Dead()
 
 void Enemy::Hurt()
 {
-	m_nHp--;
+//	m_nHp--;
+    m_nHp = 0;
 }

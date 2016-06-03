@@ -64,6 +64,7 @@ void EnemyManager::Create()
 	Info.pTexture = m_pTexture;
 	Info.fSpeed = m_fSpeed;
 	//为了不让敌机产生一半在屏幕外的情况。
+//    CCLog("rand %d",rand());
 	Info.pStartPoint = CCPointMake(rand()%(int)(_SCREEN_WIDTH_ - PlaneSize.width)
 		+ PlaneSize.width*0.5,
 		_SCREEN_HEIGHT_-1);

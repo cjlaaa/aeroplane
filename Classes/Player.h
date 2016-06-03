@@ -4,7 +4,7 @@
 
 #include "PublicDefine.h"
 
-#define _FIRE_CD_ 10
+#define _FIRE_CD_ 1
 
 class Player : public CCSprite, public Sender
 {

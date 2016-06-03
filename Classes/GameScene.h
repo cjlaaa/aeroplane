@@ -41,7 +41,8 @@ protected:
 	enum 
 	{
 		enTagPlayer,
-		enTagBackGround,
+		enTagBgMove,
+        enTagBg,
 		enTagPause,
 		enTagScore,
 		enTagRestart

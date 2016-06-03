@@ -7,7 +7,7 @@
 #include "ChooseLevel.h"
 
 //有几种敌人
-#define _ENEMY_TYPE_COUNT_ 3
+#define _ENEMY_TYPE_COUNT_ 1
 
 //保存每种敌人信息的结构体
 struct EnemyManagerPkg
@@ -100,16 +100,23 @@ bool GameScene::init()
 		this->addChild(pPlayer,enZOrderFront,enTagPlayer);
 
 		//建立背景对象
-		BackGround* pBackGround = BackGround::CreateBackGround("BackGround.png");
-		CC_BREAK_IF(pBackGround==NULL);
-		pBackGround->setPosition(ccp(_SCREEN_WIDTH_*0.5f,_SCREEN_HEIGHT_*1.f));
-		this->addChild(pBackGround,enZOrderBack,enTagBackGround);
+        CCSprite* pBg = CCSprite::create("bg.png");
+        CC_BREAK_IF(pBg==NULL);
+        pBg->setPosition(ccp(_SCREEN_WIDTH_*0.5f,_SCREEN_HEIGHT_*0.5f));
+        pBg->setScaleX(_SCREEN_WIDTH_/pBg->getContentSize().width);
+        pBg->setScaleY(_SCREEN_HEIGHT_/pBg->getContentSize().height);
+        this->addChild(pBg,enZOrderBack,enTagBg);
+		BackGround* pBgMove = BackGround::CreateBackGround("cloud.png");
+		CC_BREAK_IF(pBgMove==NULL);
+//		pBgMove->setPosition(ccp(_SCREEN_WIDTH_*0.5f,_SCREEN_HEIGHT_*1.f));
+		this->addChild(pBgMove,enZOrderBack,enTagBgMove);
 
 		//敌人信息集合
 		const EnemyManagerPkg tempEnemyManagerArray[_ENEMY_TYPE_COUNT_] = {
-			{CCTextureCache::sharedTextureCache()->addImage("Enemy1.png"),7,40,1000,2},
-			{CCTextureCache::sharedTextureCache()->addImage("Enemy2.png"),5,250,6000,4},
-			{CCTextureCache::sharedTextureCache()->addImage("Enemy3.png"),4,1500,30000,15}};
+			{CCTextureCache::sharedTextureCache()->addImage("enemy.png"),7,10,1000,2},
+//			{CCTextureCache::sharedTextureCache()->addImage("Enemy2.png"),5,250,6000,4},
+//			{CCTextureCache::sharedTextureCache()->addImage("Enemy3.png"),4,1500,30000,15}
+        };
 
 		//遍历敌人信息集合，建立每种敌人的管理器
 		for (int i=0;i<_ENEMY_TYPE_COUNT_;i++)
@@ -136,8 +143,8 @@ bool GameScene::init()
 		addChild(pPause);
 		//按钮纹理
 		CCMenuItemImage* pPauseImage = CCMenuItemImage::create(
-			"Pause.png",
-			"Pause.png",
+			"stop.png",
+			"stop.png",
 			this,
 			menu_selector(GameScene::OnPause)
 			);
@@ -197,7 +204,7 @@ void GameScene::ccTouchMoved( CCTouch *pTouch, CCEvent *pEvent )
 			pPlayer->setPosition(pPlayer->getPosition() + pTouch->getLocation() 
 				- pTouch->getPreviousLocation());
 			//移动后更新敌人碰撞方块的位置。
-			pPlayer->RectForCollision.setRect(pPlayer->getPositionX(),pPlayer->getPositionY(),pPlayer->boundingBox().size.width*0.5,pPlayer->boundingBox().size.height*0.5);
+			pPlayer->RectForCollision.setRect(pPlayer->getPositionX()-pPlayer->boundingBox().size.width*0.25,pPlayer->getPositionY()-pPlayer->boundingBox().size.height*0.25,pPlayer->boundingBox().size.width*0.5,pPlayer->boundingBox().size.height*0.5);
 		}
 
 
@@ -289,7 +296,7 @@ void GameScene::OnPreFrameUpdate( float fT )
 			BulletArrayDeleted->removeAllObjects();
 
 			//背景循环
-			BackGround* pBackGround = dynamic_cast<BackGround*>(this->getChildByTag(enTagBackGround));
+			BackGround* pBackGround = dynamic_cast<BackGround*>(this->getChildByTag(enTagBgMove));
 			CC_BREAK_IF(pBackGround==NULL);
 			pBackGround->BackGroundLoop();
 
@@ -492,6 +499,7 @@ void GameScene::AddScore( AddScoreMsg* pData )
 
 void GameScene::Restart(CCObject* pSender)
 {
-	CCScene* pScene = ChooseLevel::CreateScene();
+    CCScene *pScene = GameScene::CreateScene();
+//	CCScene* pScene = ChooseLevel::CreateScene();
 	CCDirector::sharedDirector()->replaceScene(pScene);
 }

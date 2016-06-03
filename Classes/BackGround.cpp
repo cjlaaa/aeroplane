@@ -30,12 +30,12 @@ bool BackGround::Init( const char* pFileName )
 
 		CCSprite* pBackGround1 = CCSprite::create(pFileName);
 		CC_BREAK_IF(pBackGround1==NULL);
-		pBackGround1->setPosition(ccp(_SCREEN_WIDTH_*0.f,pBackGround1->getContentSize().height*0.5f));
+		pBackGround1->setPosition(ccp(_SCREEN_WIDTH_*(rand()%9/10.0),_SCREEN_HEIGHT_*0.3f));
 		this->addChild(pBackGround1,enZOrderBack,enTagBack1);
 
 		CCSprite* pBackGround2 = CCSprite::create(pFileName);
 		CC_BREAK_IF(pBackGround2==NULL);
-		pBackGround2->setPosition(ccp(_SCREEN_WIDTH_*0.f,-pBackGround2->getContentSize().height*0.5f));
+		pBackGround2->setPosition(ccp(_SCREEN_WIDTH_*(rand()%9/10.0),_SCREEN_HEIGHT_*0.8f));
 		this->addChild(pBackGround2,enZOrderBack,enTagBack2);
 
 		return true;
@@ -74,6 +74,7 @@ void BackGround::Move()
 
 		pBackGround1->setPositionY(pBackGround1->getPositionY()-m_fSpeed);
 		pBackGround2->setPositionY(pBackGround2->getPositionY()-m_fSpeed);
+        CCLog("x %f y %f",pBackGround1->getPositionX(),pBackGround1->getPositionY());
 		return;
 
 		return;
@@ -83,12 +84,7 @@ void BackGround::Move()
 
 bool BackGround::IsReset()
 {
-	if (m_fDisplacement>=_MAX_DISPLACEMENT_)
-	{
-		m_fDisplacement = 0;
-		return true;
-	}
-	return false;
+	return true;
 }
 
 void BackGround::Reset()
@@ -99,14 +95,15 @@ void BackGround::Reset()
 		CC_BREAK_IF(pBackGround1==NULL);
 		CCSprite* pBackGround2 = dynamic_cast<CCSprite*>(this->getChildByTag(enTagBack2));
 		CC_BREAK_IF(pBackGround2==NULL);
-		//Ã»¿´¶®
-		if (pBackGround1->getPositionY() < pBackGround2->getPositionY())
+		
+		if (pBackGround1->getPositionY() < 0)
 		{
-			pBackGround1->setPositionY(pBackGround1->getPositionY()+_MAX_DISPLACEMENT_*2);
+			pBackGround1->setPosition(ccp(_SCREEN_WIDTH_*(rand()%9/10.0),_SCREEN_HEIGHT_));
 		}
-		else
+		
+		if (pBackGround2->getPositionY() < 0)
 		{
-			pBackGround2->setPositionY(pBackGround2->getPositionY()+_MAX_DISPLACEMENT_*2);
+			pBackGround2->setPosition(ccp(_SCREEN_WIDTH_*(rand()%9/10.0),_SCREEN_HEIGHT_));
 		}
 		return;
 	} while (false);
